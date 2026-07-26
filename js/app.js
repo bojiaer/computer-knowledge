@@ -1,4 +1,4 @@
-﻿/* ====== computer-knowledge API Client ====== */
+/* ====== computer-knowledge API Client ====== */
 // All requests go through Cloudflare Workers API
 // No Supabase keys exposed to frontend
 
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
   inp.addEventListener("input", function() {
     var q = this.value.trim();
     if (q.length < 1) { res.style.display = "none"; return; }
-    var hits = pagesIndex.filter(function(p) { return p.t.has(q) || (p.kw || "").has(q); });
+    var hits = pagesIndex.filter(function(p) { return p.t.toLowerCase().includes(q.toLowerCase()) || (p.kw || "").toLowerCase().includes(q.toLowerCase()); });
     if (hits.length === 0) { res.style.display = "none"; return; }
     res.innerHTML = hits.map(function(h) {
       return '<div class="hit" onclick="location.href=\'' + h.p + '\'"><div class="htitle">' + h.t + '</div><div class="hpath">' + h.p + '</div></div>';
@@ -272,7 +272,7 @@ async function renderC() {
       var tagText = p.tag || "\u672a\u5206\u7c7b";
       var bodyText = (p.body || "").slice(0, 80);
       var pid = p.id;
-      html += '<div class="note" style="left:' + x + '%;top:' + y + '%;transform:rotate(' + rot + 'deg);animation-delay:' + del + 's;border-left:4px solid ' + c + ';" onclick="openReply(\'' + pid + '\')"><div class="del-btn" onclick="event.stopPropagation();delC(\'' + pid + '\')">x</div><div class="note-tag" style="color:' + c + '">#' + tagText + '</div><div class="body">' + bodyText + '</div><div class="time">' + dateStr + (rc > 0 ? " \u00b7 " + rc + " \u015b\u015e\u015f\u015e" : "") + "</div></div>";
+      html += '<div class="note" style="left:' + x + '%;top:' + y + '%;transform:rotate(' + rot + 'deg);animation-delay:' + del + 's;border-left:4px solid ' + c + ';" onclick="openReply(\'' + pid + '\')"><div class="del-btn" onclick="event.stopPropagation();deletePost(\'' + pid + '\')">x</div><div class="note-tag" style="color:' + c + '">#' + tagText + '</div><div class="body">' + bodyText + '</div><div class="time">' + dateStr + (rc > 0 ? " \u00b7 " + rc + " \u015b\u015e\u015f\u015e" : "") + "</div></div>";
     } else {
       html += '<div class="note empty-note" style="left:' + x + '%;top:' + y + '%;transform:rotate(' + rot + 'deg);animation-delay:' + del + 's;border-left:4px solid ' + c + ';">\u0154\u0165\u015d\u016a\u0157\u015e...</div>';
     }

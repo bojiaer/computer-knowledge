@@ -1,4 +1,4 @@
-﻿const crypto = require("crypto");
+const crypto = require("crypto");
 
 const SUPABASE_URL = "https://qmxjodfvzuvxvxmkjhju.supabase.co";
 const SUPABASE_SERVICE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InFteGpvZGZ2enV2eHZ4bWtqaGp1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4NTA1MTU1MywiZXhwIjoyMTAwNjI3NTUzfQ.PpT4fedUJpi-rEO_Q1hRAnjk63Pijzbfa6tWF7If6B4";
