@@ -369,6 +369,10 @@ function replyClose() {
 
 // ---- Community over insert ----
 function communityOpen() {
+  if (!isLoggedIn()) {
+    showLogin();
+    return;
+  }
   document.getElementById("mainPage").style.display = "none";
   document.getElementById("co").classList.add("open");
   setTimeout(renderC, 50);
