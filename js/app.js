@@ -3,7 +3,7 @@
 // No Supabase keys exposed to frontend
 
 // Change this after deploying your Worker
-var API_BASE = "https://computer-knowledge-three.vercel.app";
+var API_BASE = "";
 // Or use local proxy for dev: "http://localhost:8787"
 
 // ====== AUTH STATE ======
